@@ -1,0 +1,96 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:16-alpine
+    container_name: dofta-postgres
+    environment:
+      POSTGRES_DB: dofta
+      POSTGRES_USER: dofta_user
+      POSTGRES_PASSWORD: dofta_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dofta_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dofta-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: dofta-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - dofta-network
+
+  # Rust Backend
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dofta-backend
+    environment:
+      DATABASE_URL: postgres://dofta_user:dofta_password@postgres:5432/dofta
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: dev-secret-change-in-production
+      RUST_LOG: info,dofta_backend=debug
+      HOST: 0.0.0.0
+      PORT: 8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app
+      - backend_target:/app/target
+      - backend_cargo:/usr/local/cargo/registry
+    networks:
+      - dofta-network
+    command: cargo run
+
+  # React Frontend
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: dofta-frontend
+    environment:
+      VITE_API_URL: http://localhost:8000
+      VITE_WS_URL: ws://localhost:8000
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - dofta-network
+    command: npm run dev
+
+volumes:
+  postgres_data:
+  redis_data:
+  backend_target:
+  backend_cargo:
+
+networks:
+  dofta-network:
+    driver: bridge
+
+# Made with Bob

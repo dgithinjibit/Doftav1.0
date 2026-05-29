@@ -1,0 +1,55 @@
+[package]
+name = "dofta-backend"
+version = "1.0.0"
+edition = "2021"
+authors = ["DOFTA Team"]
+description = "Backend API for DOFTA - Digital Farmer's Co-operative"
+
+[dependencies]
+# Web framework
+axum = { version = "0.7", features = ["macros", "ws"] }
+tokio = { version = "1", features = ["full"] }
+tower = { version = "0.4", features = ["util"] }
+tower-http = { version = "0.5", features = ["cors", "trace", "compression-gzip", "fs"] }
+
+# Database
+sqlx = { version = "0.7", features = ["postgres", "runtime-tokio-native-tls", "uuid", "chrono", "json"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Authentication
+jsonwebtoken = "9"
+bcrypt = "0.15"
+
+# Utilities
+uuid = { version = "1.0", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+dotenv = "0.15"
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+
+# Redis
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+
+# Blockchain
+ethers = { version = "2.0", features = ["ws", "rustls"] }
+
+# Validation
+validator = { version = "0.16", features = ["derive"] }
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json"] }
+
+# Environment
+config = "0.13"
+
+[dev-dependencies]
+tokio-test = "0.4"
+tower = { version = "0.4", features = ["util"] }
+hyper = "1.0"

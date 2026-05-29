@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-gradient-primary text-white antialiased;
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+}
+
+@layer components {
+  /* Gradient Background Variants */
+  .bg-gradient-app {
+    background: linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+  }
+
+  .bg-gradient-radial-app {
+    background: radial-gradient(circle at top, #7c3aed 0%, #a855f7 50%, #ec4899 100%);
+  }
+
+  /* Glass morphism effect for cards */
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:bg-white/15 transition-all duration-300;
+  }
+
+  /* Icon styles with colored outlines */
+  .icon-outline {
+    @apply stroke-white stroke-2;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+  }
+
+  .icon-outline-purple {
+    @apply stroke-white stroke-2;
+    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.8));
+  }
+
+  .icon-outline-pink {
+    @apply stroke-white stroke-2;
+    filter: drop-shadow(0 0 8px rgba(236, 72, 153, 0.8));
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-white/20 hover:bg-white/30 text-white font-semibold rounded-lg border border-white/30 backdrop-blur-sm transition-all duration-300 hover:shadow-glow-purple;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-transparent hover:bg-white/10 text-white font-semibold rounded-lg border-2 border-white/50 transition-all duration-300;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-glow-pink transition-all duration-300;
+  }
+
+  /* Input styles */
+  .input-glass {
+    @apply w-full px-4 py-3 bg-white/10 border border-white/30 rounded-lg text-white placeholder-white/60 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all;
+  }
+
+  /* Card styles */
+  .card-gradient {
+    @apply glass-card p-6 hover:scale-[1.02] transition-transform duration-300;
+  }
+
+  /* Text glow effects */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+
+  .text-glow-purple {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 20px rgba(236, 72, 153, 0.8);
+  }
+
+  /* Scrollbar styling */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-white/10 rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-white/30 rounded-full hover:bg-white/40;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-4 border-white/20 border-t-white;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/20 border border-white/30 backdrop-blur-sm;
+  }
+
+  .badge-purple {
+    @apply badge bg-primary-500/30 border-primary-400/50;
+  }
+
+  .badge-pink {
+    @apply badge bg-accent-500/30 border-accent-400/50;
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-white/30 to-transparent;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply px-4 py-2 text-white/80 hover:text-white hover:bg-white/10 rounded-lg transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply nav-link bg-white/20 text-white font-semibold;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .animate-slide-down {
+    animation: slideDown 0.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-white via-primary-200 to-accent-200 bg-clip-text text-transparent;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-strong {
+    backdrop-filter: blur(20px);
+  }
+}
+
+/* Made with Bob */
