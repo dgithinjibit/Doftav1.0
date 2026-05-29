@@ -31,7 +31,7 @@ const Landing: React.FC<LandingProps> = ({ onConnect }) => {
             <p className="text-white/80">Active Farmers</p>
           </div>
           <div className="glass-card p-6 rounded-xl">
-            <p className="text-4xl font-bold text-white mb-2">$2.5M</p>
+            <p className="text-4xl font-bold text-white mb-2">KES 350M</p>
             <p className="text-white/80">Trade Volume</p>
           </div>
           <div className="glass-card p-6 rounded-xl">

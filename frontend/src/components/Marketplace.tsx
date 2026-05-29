@@ -6,10 +6,10 @@ import Button from './shared/Button';
 import { CheckCircleIcon } from './icons';
 
 const mockListings: MarketplaceListing[] = [
-    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 2.5, imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop' },
-    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 1.8, imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop' },
-    { id: '3', product: 'Sweet Corn', farmer: 'Farmer John', quantity: 500, unit: 'ears', qualityScore: 98, sustainabilityBadges: ['Organic', 'No-Till'], pricePerUnit: 0.5, imageUrl: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop' },
-    { id: '4', product: 'Red Potatoes', farmer: 'Riverbend Farms', quantity: 300, unit: 'kg', qualityScore: 90, sustainabilityBadges: ['Low-Carbon'], pricePerUnit: 1.2, imageUrl: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop' },
+    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 350, imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop' },
+    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 250, imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop' },
+    { id: '3', product: 'Sweet Corn', farmer: 'Farmer John', quantity: 500, unit: 'ears', qualityScore: 98, sustainabilityBadges: ['Organic', 'No-Till'], pricePerUnit: 70, imageUrl: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?w=400&h=300&fit=crop' },
+    { id: '4', product: 'Red Potatoes', farmer: 'Riverbend Farms', quantity: 300, unit: 'kg', qualityScore: 90, sustainabilityBadges: ['Low-Carbon'], pricePerUnit: 170, imageUrl: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop' },
 ];
 
 interface MarketplaceProps {
@@ -34,8 +34,8 @@ const FarmerView: React.FC = () => {
                         <input type="number" id="quantity" defaultValue="120" className="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"/>
                     </div>
                      <div>
-                        <label htmlFor="price" className="block text-sm font-medium text-stone-600">Price per kg ($)</label>
-                        <input type="number" id="price" defaultValue="3.10" className="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"/>
+                        <label htmlFor="price" className="block text-sm font-medium text-stone-600">Price per kg (KES)</label>
+                        <input type="number" id="price" defaultValue="430" className="mt-1 block w-full px-3 py-2 bg-white border border-stone-300 rounded-md shadow-sm focus:outline-none focus:ring-emerald-500 focus:border-emerald-500"/>
                     </div>
                     <Button type="submit" fullWidth>Review & List</Button>
                 </form>
@@ -74,7 +74,7 @@ const BuyerView: React.FC = () => {
                             <div className="flex-grow"></div>
                             <div className="flex justify-between items-end mt-4">
                                 <div>
-                                    <p className="text-2xl font-bold text-emerald-600">${listing.pricePerUnit.toFixed(2)}<span className="text-sm font-normal text-stone-500">/{listing.unit}</span></p>
+                                    <p className="text-2xl font-bold text-emerald-600">KES {listing.pricePerUnit.toFixed(0)}<span className="text-sm font-normal text-stone-500">/{listing.unit}</span></p>
                                     <p className="text-sm text-stone-600">{listing.quantity} {listing.unit} available</p>
                                 </div>
                                 <Button variant="primary" className="py-2 px-4">Bid</Button>

@@ -29,7 +29,7 @@ const Wallet: React.FC = () => {
 
             <Card className="bg-gradient-to-br from-emerald-600 to-lime-600 text-white p-6">
                 <p className="text-lg font-medium opacity-80">Total Value</p>
-                <p className="text-4xl font-bold mt-1">$2,845.50</p>
+                <p className="text-4xl font-bold mt-1">KES 398,370</p>
                 <div className="mt-6 grid grid-cols-3 gap-4 text-center">
                     <div>
                         <p className="font-bold text-xl">1,250</p>

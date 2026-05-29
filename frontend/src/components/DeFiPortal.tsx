@@ -61,7 +61,7 @@ const DeFiPortal: React.FC = () => {
                  <p className="text-lime-700 mt-1">You are pre-approved for a low-interest loan to invest in your farm.</p>
                  <div className="mt-6 bg-white p-6 rounded-lg shadow-sm text-center">
                     <p className="text-sm text-stone-500">Loan Amount</p>
-                    <p className="text-4xl font-bold text-stone-800">$5,000</p>
+                    <p className="text-4xl font-bold text-stone-800">KES 700,000</p>
                     <p className="text-sm text-stone-500 mt-2">at <span className="font-bold text-emerald-600">3.5% APR</span></p>
                     <Button className="mt-6" fullWidth>Apply in 2 Minutes</Button>
                  </div>

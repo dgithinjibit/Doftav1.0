@@ -11,8 +11,8 @@ interface BuyerDashboardProps {
 }
 
 const mockListings: MarketplaceListing[] = [
-    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 2.5, imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop' },
-    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 1.8, imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop' },
+    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 350, imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop' },
+    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 250, imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop' },
 ];
 
 
@@ -43,7 +43,7 @@ const BuyerDashboard: React.FC<BuyerDashboardProps> = ({ navigate }) => {
                             <p className="text-sm text-stone-500">from {listing.farmer}</p>
                             <div className="flex justify-between items-end mt-4">
                                 <div>
-                                    <p className="text-2xl font-bold text-emerald-600">${listing.pricePerUnit.toFixed(2)}<span className="text-sm font-normal text-stone-500">/{listing.unit}</span></p>
+                                    <p className="text-2xl font-bold text-emerald-600">KES {listing.pricePerUnit.toFixed(0)}<span className="text-sm font-normal text-stone-500">/{listing.unit}</span></p>
                                     <p className="text-sm text-stone-600">{listing.quantity} {listing.unit} available</p>
                                 </div>
                                 <div className="text-right">
