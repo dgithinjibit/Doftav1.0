@@ -11,8 +11,8 @@ interface BuyerDashboardProps {
 }
 
 const mockListings: MarketplaceListing[] = [
-    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 2.5, imageUrl: 'https://picsum.photos/seed/tomatoes/400/300' },
-    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 1.8, imageUrl: 'https://picsum.photos/seed/carrots/400/300' },
+    { id: '1', product: 'Organic Tomatoes', farmer: 'Green Valley Farms', quantity: 200, unit: 'kg', qualityScore: 95, sustainabilityBadges: ['Water-Wise', 'Low-Carbon'], pricePerUnit: 2.5, imageUrl: 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&h=300&fit=crop' },
+    { id: '2', product: 'Heirloom Carrots', farmer: 'Sunset Acres', quantity: 150, unit: 'kg', qualityScore: 92, sustainabilityBadges: ['Organic'], pricePerUnit: 1.8, imageUrl: 'https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=400&h=300&fit=crop' },
 ];
 
 
