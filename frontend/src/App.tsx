@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { UserRole, Screen } from './types';
+import Landing from './components/Landing';
+import WalletConnecting from './components/WalletConnecting';
 import Onboarding from './components/Onboarding';
 import FarmerDashboard from './components/FarmerDashboard';
 import BuyerDashboard from './components/BuyerDashboard';
@@ -12,14 +14,42 @@ import Governance from './components/Governance';
 import BottomNav from './components/shared/BottomNav';
 import Header from './components/shared/Header';
 
+type AppState = 'landing' | 'connecting' | 'onboarding' | 'dashboard';
+
 const App: React.FC = () => {
+  const [appState, setAppState] = useState<AppState>('landing');
   const [userRole, setUserRole] = useState<UserRole | null>(null);
   const [currentScreen, setCurrentScreen] = useState<Screen>(Screen.Dashboard);
 
-  const handleOnboardingComplete = useCallback((role: UserRole) => {
-    setUserRole(role);
+  const handleConnectWallet = useCallback(() => {
+    setAppState('connecting');
   }, []);
 
+  const handleWalletConnected = useCallback(() => {
+    setAppState('onboarding');
+  }, []);
+
+  const handleOnboardingComplete = useCallback((role: UserRole) => {
+    setUserRole(role);
+    setAppState('dashboard');
+  }, []);
+
+  // Show landing page
+  if (appState === 'landing') {
+    return <Landing onConnect={handleConnectWallet} />;
+  }
+
+  // Show wallet connecting animation
+  if (appState === 'connecting') {
+    return <WalletConnecting onComplete={handleWalletConnected} />;
+  }
+
+  // Show onboarding (role selection)
+  if (appState === 'onboarding') {
+    return <Onboarding onComplete={handleOnboardingComplete} />;
+  }
+
+  // Show dashboard
   const renderContent = () => {
     switch (currentScreen) {
       case Screen.Dashboard:
@@ -40,10 +70,6 @@ const App: React.FC = () => {
         return userRole === UserRole.Farmer ? <FarmerDashboard navigate={setCurrentScreen} /> : <BuyerDashboard navigate={setCurrentScreen} />;
     }
   };
-
-  if (!userRole) {
-    return <Onboarding onComplete={handleOnboardingComplete} />;
-  }
   
   const isMobileView = userRole === UserRole.Farmer;
 

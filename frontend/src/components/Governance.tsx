@@ -3,7 +3,6 @@ import React from 'react';
 import Card from './shared/Card';
 import Button from './shared/Button';
 import { GovernanceProposal } from '../types';
-import { GovIcon } from './icons';
 
 const mockProposals: GovernanceProposal[] = [
     { id: '1', title: 'Reduce Marketplace Fee from 2% to 1.5%', description: 'A proposal to lower the platform fee to increase farmer take-home revenue.', status: 'active', votesFor: 12500, votesAgainst: 3200, endDate: '3 days' },

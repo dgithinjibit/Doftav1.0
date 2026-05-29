@@ -2,7 +2,7 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Card from './shared/Card';
-import { SunIcon, DropletIcon, ThermometerIcon, LeafIcon, ArrowRightIcon } from './icons';
+import { SunIcon, DropletIcon, ThermometerIcon, ArrowRightIcon } from './icons';
 import { Alert } from '../types';
 
 const mockSensorData = [

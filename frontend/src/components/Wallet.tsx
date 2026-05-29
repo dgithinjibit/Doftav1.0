@@ -2,7 +2,7 @@
 import React from 'react';
 import Card from './shared/Card';
 import { WalletTransaction } from '../types';
-import { WasteIcon, CarbonIcon, GovIcon, SproutIcon, CheckCircleIcon } from './icons';
+import { WasteIcon, CarbonIcon, GovIcon } from './icons';
 
 const mockTransactions: WalletTransaction[] = [
     { id: '1', type: 'earn', token: 'WASTE', amount: 25, description: 'Prevented spoilage in Sector 4', date: '2024-07-21' },
