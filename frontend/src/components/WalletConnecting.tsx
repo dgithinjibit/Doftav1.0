@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { CheckCircleIcon } from './icons';
 
 interface WalletConnectingProps {
   onComplete: () => void;

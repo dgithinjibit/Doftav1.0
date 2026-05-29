@@ -76,7 +76,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen font-sans antialiased bg-gradient-to-br from-purple-600 via-purple-500 to-pink-500">
        <div className={`${isMobileView ? 'w-full max-w-lg mx-auto' : ''} flex flex-col h-full`}>
-        <Header userRole={userRole} />
+        <Header userRole={userRole!} />
         <main className="flex-grow overflow-y-auto pb-24 px-4 md:px-6 lg:px-8">
           {renderContent()}
         </main>
