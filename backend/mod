@@ -1,0 +1,12 @@
+pub mod handlers;
+pub mod models;
+
+use axum::{routing::{get, post}, Router};
+use crate::auth::handlers::AppState;
+use handlers::*;
+
+pub fn routes() -> Router<AppState> {
+    Router::new()
+        .route("/carbon/credits", get(list_credits).post(submit_verification))
+        .route("/carbon/credits/:id", get(get_credit))
+}
