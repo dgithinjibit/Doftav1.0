@@ -83,4 +83,3 @@ const Landing: React.FC<LandingProps> = ({ onConnect }) => {
 
 export default Landing;
 
-// Made with Bob

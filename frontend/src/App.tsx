@@ -88,4 +88,3 @@ const App: React.FC = () => {
 
 export default App;
 
-// Made with Bob

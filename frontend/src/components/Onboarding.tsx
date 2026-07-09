@@ -100,4 +100,3 @@ const Onboarding: React.FC<OnboardingProps> = ({ onComplete }) => {
 
 export default Onboarding;
 
-// Made with Bob

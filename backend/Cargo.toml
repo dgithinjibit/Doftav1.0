@@ -35,7 +35,7 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
 
 # Redis
-redis = { version = "0.24", features = ["tokio-comp", "connection-manager"] }
+redis = { version = "0.24", features = ["tokio-comp", "connection-manager", "tokio-native-tls-comp"] }
 
 # Blockchain
 ethers = { version = "2.0", features = ["ws", "rustls"] }

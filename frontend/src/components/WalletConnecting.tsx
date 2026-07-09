@@ -64,4 +64,3 @@ const WalletConnecting: React.FC<WalletConnectingProps> = ({ onComplete }) => {
 
 export default WalletConnecting;
 
-// Made with Bob
