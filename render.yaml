@@ -26,8 +26,8 @@ services:
     name: dofta-frontend
     runtime: static
     plan: free
-    buildCommand: cd frontend && npm install && npm run build
-    staticPublishPath: frontend/dist
+    buildCommand: npm --prefix frontend install --no-fund --no-audit && npm --prefix frontend run build
+    staticPublishPath: build
     envVars:
       - key: VITE_API_URL
         value: https://dofta-backend.onrender.com
