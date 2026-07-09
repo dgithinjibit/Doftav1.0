@@ -92,5 +92,3 @@ volumes:
 networks:
   dofta-network:
     driver: bridge
-
-# Made with Bob

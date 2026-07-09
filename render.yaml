@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: dofta-backend
+    runtime: rust
+    plan: free
+    buildCommand: cd backend && cargo build --release
+    startCommand: bash ./backend/render-start.sh
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: dofta-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          name: dofta-redis
+          type: redis
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: HOST
+        value: 0.0.0.0
+      - key: PORT
+        value: 10000
+
+  - type: web
+    name: dofta-frontend
+    runtime: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://dofta-backend.onrender.com
+      - key: VITE_WS_URL
+        value: wss://dofta-backend.onrender.com
+
+  - type: redis
+    name: dofta-redis
+    plan: free
+
+databases:
+  - name: dofta-db
+    databaseName: dofta
+    user: dofta_user
+    plan: free

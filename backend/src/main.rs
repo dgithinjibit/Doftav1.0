@@ -51,6 +51,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(root))
         .route("/health", get(health_check))
+        .route("/healthz", get(health_check))
         .merge(handlers::routes())
         .layer(CorsLayer::permissive())
         .with_state(state);
