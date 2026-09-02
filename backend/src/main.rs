@@ -1,5 +1,7 @@
-use axum::routing::get;
-use axum::Router;
+use axum::{
+    routing::{get, post},
+    Router,
+};
 use std::net::SocketAddr;
 use tower_http::cors::CorsLayer;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
@@ -11,13 +13,7 @@ mod models;
 mod db;
 mod blockchain;
 mod utils;
-mod auth;
-mod errors;
-mod handlers;
-mod middleware;
-
-use config::Config;
-use handlers::AppState;
+mod websocket;
 
 #[tokio::main]
 async fn main() {
@@ -32,29 +28,15 @@ async fn main() {
 
     // Load configuration
     dotenv::dotenv().ok();
-
+    
     tracing::info!("Starting DOFTA Backend Server...");
-
-    let config = Config::from_env();
-
-    let db = db::create_pg_pool(&config.database_url)
-        .await
-        .expect("Failed to connect to Postgres");
-
-    let redis = db::create_redis_pool(&config.redis_url)
-        .await
-        .expect("Failed to connect to Redis");
-
-    let state = AppState { db, redis, config };
 
     // Build application router
     let app = Router::new()
         .route("/", get(root))
         .route("/health", get(health_check))
-        .route("/healthz", get(health_check))
-        .merge(handlers::routes())
-        .layer(CorsLayer::permissive())
-        .with_state(state);
+        // Add CORS middleware
+        .layer(CorsLayer::permissive());
 
     // Get server address from environment or use default
     let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".to_string());
@@ -82,3 +64,4 @@ async fn root() -> &'static str {
 async fn health_check() -> &'static str {
     "OK"
 }
+
